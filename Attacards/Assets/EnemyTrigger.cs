@@ -4,42 +4,51 @@ using UnityEngine.SceneManagement; // Para cambiar de escena
 public class EnemyTriggerZone : MonoBehaviour
 {
     public Transform enemy;         // Asigna el transform del enemigo en el inspector
-    public Transform cameraTransform; // Asigna la cámara del juego
-    public float cameraMoveSpeed = 2.0f; // Velocidad a la que la cámara se mueve hacia el enemigo
+    public GameObject cuerpoEnemigo;
+    public Transform cameraTransform; // Asigna la cï¿½mara del juego
+    public float cameraMoveSpeed = 2.0f; // Velocidad a la que la cï¿½mara se mueve hacia el enemigo
     public string sceneToLoad;      // Nombre de la escena a cargar
-    public MonoBehaviour cameraController; // El script de control manual de la cámara
-
-    private bool isCameraMoving = false; // Bandera para mover la cámara
-    private Vector3 originalCameraPosition; // Para guardar la posición original de la cámara
+    public MonoBehaviour cameraController; // El script de control manual de la cï¿½mara
+    public string idEnemigo;
+    private bool isCameraMoving = false; // Bandera para mover la cï¿½mara
+    private Vector3 originalCameraPosition; // Para guardar la posiciï¿½n original de la cï¿½mara
 
     void Start()
     {
-        // Guarda la posición original de la cámara
+
+         // Comprueba si el enemigo ya ha sido derrotado.
+        if (PlayerPrefs.GetInt(idEnemigo, 0) == 1)
+        {
+            // Desactiva el objeto enemigo si estÃ¡ derrotado.
+            cuerpoEnemigo.SetActive(false);
+        }
+
+        // Guarda la posiciï¿½n original de la cï¿½mara
         if (cameraTransform != null)
         {
             originalCameraPosition = cameraTransform.position;
         }
         else
         {
-            Debug.LogError("La cámara no está asignada en el inspector.");
+            Debug.LogError("La cï¿½mara no estï¿½ asignada en el inspector.");
         }
 
-        // Comprueba si el controlador de la cámara está asignado
+        // Comprueba si el controlador de la cï¿½mara estï¿½ asignado
         if (cameraController == null)
         {
-            Debug.LogWarning("No se asignó un controlador de cámara manual. Asegúrate de configurarlo en el inspector.");
+            Debug.LogWarning("No se asignï¿½ un controlador de cï¿½mara manual. Asegï¿½rate de configurarlo en el inspector.");
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Comprueba si el jugador entra en el área
+        // Comprueba si el jugador entra en el ï¿½rea
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Jugador detectado, moviendo la cámara hacia el enemigo.");
-            isCameraMoving = true; // Activa el movimiento de la cámara
+            Debug.Log("Jugador detectado, moviendo la cï¿½mara hacia el enemigo.");
+            isCameraMoving = true; // Activa el movimiento de la cï¿½mara
 
-            // Desactiva el control manual de la cámara
+            // Desactiva el control manual de la cï¿½mara
             if (cameraController != null)
             {
                 cameraController.enabled = false;
@@ -51,13 +60,13 @@ public class EnemyTriggerZone : MonoBehaviour
     {
         if (isCameraMoving)
         {
-            // Mueve la cámara suavemente hacia el enemigo
+            // Mueve la cï¿½mara suavemente hacia el enemigo
             cameraTransform.position = Vector3.Lerp(cameraTransform.position, enemy.position, cameraMoveSpeed * Time.deltaTime);
 
-            // Opcional: Rotar la cámara para mirar al enemigo
+            // Opcional: Rotar la cï¿½mara para mirar al enemigo
             cameraTransform.LookAt(enemy);
 
-            // Si la cámara está cerca del enemigo, cambia de escena
+            // Si la cï¿½mara estï¿½ cerca del enemigo, cambia de escena
             if (Vector3.Distance(cameraTransform.position, enemy.position) < 0.5f)
             {
                 Debug.Log("Cambiando de escena...");
@@ -69,6 +78,9 @@ public class EnemyTriggerZone : MonoBehaviour
 
     void ChangeScene()
     {
+
+        PlayerPrefs.SetString("enemigo", idEnemigo);
+        PlayerPrefs.Save();
         // Cambia a la escena especificada
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
@@ -82,7 +94,7 @@ public class EnemyTriggerZone : MonoBehaviour
 
     private void OnDisable()
     {
-        // Reactiva el control manual de la cámara si el script se desactiva
+        // Reactiva el control manual de la cï¿½mara si el script se desactiva
         if (cameraController != null)
         {
             cameraController.enabled = true;

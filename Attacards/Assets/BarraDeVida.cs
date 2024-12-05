@@ -9,6 +9,8 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] private GameObject botonCambioEscena; // Botón para cambiar de escena.
     [SerializeField] private GameObject mensajeFinCombate; // Texto que aparece al terminar el combate.
     [SerializeField] private string nombreSiguienteEscena; // Nombre de la siguiente escena.
+    [SerializeField] private string idEnemigo; // Identificador único para el enemigo.
+
 
     private float vidaActual;
 
@@ -58,7 +60,12 @@ public class BarraDeVida : MonoBehaviour
 
     private void TerminarCombate()
     {
+        idEnemigo = PlayerPrefs.GetString("enemigo","enemigo");
+
         Debug.Log("¡Combate terminado!");
+
+        PlayerPrefs.SetInt(idEnemigo, 1); // 1 significa que el enemigo ha sido derrotado.
+        PlayerPrefs.Save();
 
         if (mensajeFinCombate != null)
         {
