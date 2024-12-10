@@ -84,4 +84,9 @@ public class BarraDeVida : MonoBehaviour
     {
         SceneManager.LoadScene(nombreSiguienteEscena);
     }
+
+    public float GetVidaEnemigo()
+    {
+        return vidaMaxima;
+    }
 }
