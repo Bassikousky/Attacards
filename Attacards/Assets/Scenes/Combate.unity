@@ -493,12 +493,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34dd4dee6509b0249b9fb67f42b70bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 100
+  vidaMaximaEnemigo: 100
   barraDeVida: {fileID: 1660609370}
   botonCambioEscena: {fileID: 999313285}
   mensajeFinCombate: {fileID: 700505951}
   nombreSiguienteEscena: Playground
   idEnemigo: 
+  healthText: {fileID: 226135941}
+  vidaActualUsuario: 10
+  vidaInicialUsuario: 10
+  vidaActualEnemigo: 0
+  enemyDamageText: {fileID: 1234740659}
+  enemyDamage: 0
+  isPlayerTurn: 1
+  botonCambioTurno: {fileID: 1389786116}
 --- !u!1 &688684099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,8 +1177,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 272.66818, y: -270.9953}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 272.7, y: -270.96}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1152354774
 MonoBehaviour:
@@ -1767,8 +1775,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 257.90195, y: -271.88}
-  m_SizeDelta: {x: 0.6922, y: 0.3034}
+  m_AnchoredPosition: {x: 257.65, y: -271.655}
+  m_SizeDelta: {x: 0.47, y: 0.20135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389786118
 MonoBehaviour:
@@ -1816,7 +1824,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 348013231}
         m_TargetAssemblyTypeName: BarraDeVida, Assembly-CSharp
-        m_MethodName: CambiarEscena
+        m_MethodName: CambiarTurno
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2149,61 +2157,6 @@ RectTransform:
   m_AnchoredPosition: {x: -257.01544, y: 272.3551}
   m_SizeDelta: {x: 1611, y: 544}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1832320530
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1832320532}
-  - component: {fileID: 1832320531}
-  m_Layer: 0
-  m_Name: Combate
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1832320531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832320530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 077d2d31a6bfa8b4395a3de471675c73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthIndicator: {fileID: 1152354774}
-  barraDeVida: {fileID: 348013231}
-  playerHealth: 10
-  enemyHealth: 100
-  playerDamage: 20
-  enemyDamage: 15
-  turnText: {fileID: 0}
-  playerHealthText: {fileID: 0}
-  enemyHealthText: {fileID: 0}
-  enemyDamageText: {fileID: 1234740659}
-  endTurnButton: {fileID: 1389786118}
---- !u!4 &1832320532
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832320530}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.61176646, y: 0.8146424, z: -9.685107}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1936045378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 78d1a63580243484e96b64b94038a9ae, type: 3}
@@ -7041,4 +6994,3 @@ SceneRoots:
   - {fileID: 972620016}
   - {fileID: 1804407132}
   - {fileID: 7635845622708273747}
-  - {fileID: 1832320532}

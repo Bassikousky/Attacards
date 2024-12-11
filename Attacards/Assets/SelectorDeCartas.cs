@@ -27,5 +27,6 @@ public class SelectorDeCartas : MonoBehaviour
 
         // Aplica el daño al enemigo.
         barraDeVida.AplicarDaño(daño);
+        
     }
 }
