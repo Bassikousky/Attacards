@@ -21,6 +21,7 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] public TMP_Text enemyDamageText;
     [SerializeField] private int enemyDamage;
     [SerializeField] private GameObject botonCambioTurno;
+    [SerializeField] public SelectorDeCartas selectorCartas;
 
     void Start()
     {
@@ -48,6 +49,7 @@ public class BarraDeVida : MonoBehaviour
 
     public void TurnoUsuario()
     {
+        selectorCartas.ResetCartas();
         GenerarDamageEnemigo(); 
         IntencionEnemigo();
 
