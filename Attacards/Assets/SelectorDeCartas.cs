@@ -48,7 +48,7 @@ public class SelectorDeCartas : MonoBehaviour
         if (usos == limiteUsoCartas)
         {
             HideCartas();
-            usos = 0;
+            ResetUsos();
         }
     }
 
@@ -75,5 +75,10 @@ public class SelectorDeCartas : MonoBehaviour
         System.Random random = new System.Random();
         damage = random.Next(1, 26);
         return damage; 
+    }
+
+    public void ResetUsos()
+    {
+        usos = 0;
     }
 }

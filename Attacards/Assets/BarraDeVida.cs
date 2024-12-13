@@ -53,6 +53,7 @@ public class BarraDeVida : MonoBehaviour
     public void TurnoUsuario()
     {
         selectorCartas.ResetCartas();
+        selectorCartas.ResetUsos();
         GenerarDamageEnemigo(); 
         IntencionEnemigo();
 
