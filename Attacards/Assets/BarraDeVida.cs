@@ -15,6 +15,7 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] private string idEnemigo; // Identificador único para el enemigo.
 
     [SerializeField] public TMP_Text healthText; // Asignar el texto del indicador desde el Inspector.
+    [SerializeField] public TMP_Text defensaText; // Asignar el texto del indicador desde el Inspector.
     [SerializeField] public int vidaActualUsuario; // Salud actual del jugador.
     [SerializeField] public int vidaInicialUsuario;
     [SerializeField] private int defensa;
@@ -46,6 +47,7 @@ public class BarraDeVida : MonoBehaviour
     void Update()
     {
         UpdateHealthText(vidaActualUsuario);
+        UpdateDefenseText(defensa);
     }
 
     public void TurnoUsuario()
@@ -94,9 +96,9 @@ public class BarraDeVida : MonoBehaviour
         }
     }
 
-    public void AplicarDefensa(int defensa)
+    public void AplicarDefensa(int aumentoDefensa)
     {
-        this.defensa = defensa;
+        defensa += aumentoDefensa;
     }
 
     private void ActualizarBarraDeVida()
@@ -161,10 +163,18 @@ public class BarraDeVida : MonoBehaviour
     // Actualiza el texto del indicador.
     private void UpdateHealthText(int vida)
     {
-        if (healthText != null) {
+        if (healthText != null) 
+        {
             healthText.text = vida.ToString(); // Actualiza el texto.
         }
-        
+    }
+
+    private void UpdateDefenseText(int defensa)
+    {
+        if (defensaText != null)
+        {
+            defensaText.text = defensa.ToString();
+        }
     }
 
     private void GenerarDamageEnemigo() 

@@ -10,44 +10,45 @@ public class SelectorDeCartas : MonoBehaviour
     public GameObject carta5;
 
     private int defensa;
+    private int damage;
+    private int limiteUsoCartas = 3;
+    private int usos = 0;
 
 
     public void SeleccionarOpcion(int opcion)
     {
-        // Define los daños asociados a cada opción (carta).
-        float daño = 0;
-        
+            switch (opcion)
+            {
+                case 1: // Carta 1
+                    barraDeVida.AplicarDaño(GenerarDamage());
+                    carta1.SetActive(false);
+                    break;
+                case 2: // Carta 2
+                    barraDeVida.AplicarDaño(GenerarDamage());
+                    carta2.SetActive(false);
+                    break;
+                case 3: // Carta 3
+                    barraDeVida.AplicarDaño(GenerarDamage());
+                    carta3.SetActive(false);
+                    break;
+                case 4: // Carta 4
+                    barraDeVida.AplicarDefensa(1);
+                    carta4.SetActive(false);
+                    break;
+                case 5: // Carta 5
+                    barraDeVida.AplicarDefensa(1);
+                    carta5.SetActive(false);
+                    break;
+                default:
+                    Debug.LogWarning("Opción no válida.");
+                    return;
+            }
 
-        switch (opcion)
+        usos++;
+        if (usos == limiteUsoCartas)
         {
-            case 1: // Carta 1
-                daño = 10f; // Daño bajo.
-                carta1.SetActive(false);
-                break;
-            case 2: // Carta 2
-                daño = 25f; // Daño medio.
-                carta2.SetActive(false);
-                break;
-            case 3: // Carta 3
-                daño = 50f; // Daño alto.
-                carta3.SetActive(false);
-                break;
-            case 4:
-                defensa += 1;
-                carta4.SetActive(false);
-                break;
-            case 5:
-                defensa += 1;
-                carta5.SetActive(false);
-                break;
-            default:
-                Debug.LogWarning("Opción no válida.");
-                return;
+            HideCartas();
         }
-
-        // Aplica el daño al enemigo.
-        barraDeVida.AplicarDaño(daño);
-        barraDeVida.AplicarDefensa(defensa);
     }
 
     public void ResetCartas()
@@ -57,5 +58,21 @@ public class SelectorDeCartas : MonoBehaviour
         carta3.SetActive(true);
         carta4.SetActive(true);
         carta5.SetActive(true);
+    }
+
+    public void HideCartas()
+    {
+        carta1.SetActive(false);
+        carta2.SetActive(false);
+        carta3.SetActive(false);
+        carta4.SetActive(false);
+        carta5.SetActive(false);
+    }
+
+    private int GenerarDamage() 
+    {
+        System.Random random = new System.Random();
+        damage = random.Next(1, 26);
+        return damage; 
     }
 }
