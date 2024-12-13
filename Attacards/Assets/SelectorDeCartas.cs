@@ -9,12 +9,14 @@ public class SelectorDeCartas : MonoBehaviour
     public GameObject carta4;
     public GameObject carta5;
 
+    private int defensa;
+
 
     public void SeleccionarOpcion(int opcion)
     {
         // Define los daños asociados a cada opción (carta).
         float daño = 0;
-        float defensa = 0;
+        
 
         switch (opcion)
         {
@@ -31,11 +33,11 @@ public class SelectorDeCartas : MonoBehaviour
                 carta3.SetActive(false);
                 break;
             case 4:
-                defensa = 1f;
+                defensa += 1;
                 carta4.SetActive(false);
                 break;
             case 5:
-                defensa = 1f;
+                defensa += 1;
                 carta5.SetActive(false);
                 break;
             default:
@@ -45,6 +47,7 @@ public class SelectorDeCartas : MonoBehaviour
 
         // Aplica el daño al enemigo.
         barraDeVida.AplicarDaño(daño);
+        barraDeVida.AplicarDefensa(defensa);
     }
 
     public void ResetCartas()

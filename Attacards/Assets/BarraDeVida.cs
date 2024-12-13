@@ -17,6 +17,7 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] public TMP_Text healthText; // Asignar el texto del indicador desde el Inspector.
     [SerializeField] public int vidaActualUsuario; // Salud actual del jugador.
     [SerializeField] public int vidaInicialUsuario;
+    [SerializeField] private int defensa;
     [SerializeField] private float vidaActualEnemigo;
     [SerializeField] public TMP_Text enemyDamageText;
     [SerializeField] private int enemyDamage;
@@ -71,6 +72,7 @@ public class BarraDeVida : MonoBehaviour
         {
             SceneManager.LoadScene(escenaGameOver);
         }
+        defensa = 0;
         TurnoUsuario();
     }
 
@@ -92,6 +94,11 @@ public class BarraDeVida : MonoBehaviour
         }
     }
 
+    public void AplicarDefensa(int defensa)
+    {
+        this.defensa = defensa;
+    }
+
     private void ActualizarBarraDeVida()
     {
         // Calcula el porcentaje de vida restante.
@@ -108,6 +115,7 @@ public class BarraDeVida : MonoBehaviour
         Debug.Log("¡Combate terminado!");
 
         PlayerPrefs.SetInt(idEnemigo, 1); // 1 significa que el enemigo ha sido derrotado.
+        PlayerPrefs.SetInt("Vida", vidaActualUsuario);
         PlayerPrefs.Save();
 
         if (mensajeFinCombate != null)
@@ -130,14 +138,19 @@ public class BarraDeVida : MonoBehaviour
 
     public void InitializeHealth(int vidaInicialUsuario)
     {
-        vidaActualUsuario = vidaInicialUsuario;
+        vidaActualUsuario = PlayerPrefs.GetInt("Vida", vidaInicialUsuario);
         UpdateHealthText(vidaActualUsuario);
     }
 
     public void TakeDamage(int damage)
     {
-        vidaActualUsuario -= damage; // Reduce la salud.
-        vidaActualUsuario = Mathf.Max(vidaActualUsuario, 0); // Asegúrate de que no sea menor a 0.
+        int resto = 0;
+        resto = defensa - damage;
+        if (resto < 0)
+        {
+            vidaActualUsuario = vidaActualUsuario + resto; // Reduce la salud.
+            vidaActualUsuario = Mathf.Max(vidaActualUsuario, 0); // Asegúrate de que no sea menor a 0.
+        }
         UpdateHealthText(vidaActualUsuario);
 
         if (vidaActualUsuario == 0) {

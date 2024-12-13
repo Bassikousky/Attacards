@@ -608,6 +608,7 @@ MonoBehaviour:
   healthText: {fileID: 226135941}
   vidaActualUsuario: 10
   vidaInicialUsuario: 10
+  defensa: 0
   vidaActualEnemigo: 10
   enemyDamageText: {fileID: 1234740659}
   enemyDamage: 0
@@ -1157,7 +1158,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 54.1
+  field of view: 68.9
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
