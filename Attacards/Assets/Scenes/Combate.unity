@@ -498,6 +498,7 @@ MonoBehaviour:
   botonCambioEscena: {fileID: 999313285}
   mensajeFinCombate: {fileID: 700505951}
   nombreSiguienteEscena: Playground
+  escenaGameOver: GameOver
   idEnemigo: 
   healthText: {fileID: 226135941}
   vidaActualUsuario: 10

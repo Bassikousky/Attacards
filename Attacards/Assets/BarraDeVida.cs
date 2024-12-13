@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement; // Necesario para cambiar de escena.
 using UnityEngine.UI; // Necesario para trabajar con botones y UI.
 using TMPro;
+using System;
 
 public class BarraDeVida : MonoBehaviour
 {
@@ -10,15 +11,15 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] private GameObject botonCambioEscena; // Botón para cambiar de escena.
     [SerializeField] private GameObject mensajeFinCombate; // Texto que aparece al terminar el combate.
     [SerializeField] private string nombreSiguienteEscena; // Nombre de la siguiente escena.
+    [SerializeField] private string escenaGameOver; // Nombre de la siguiente escena.
     [SerializeField] private string idEnemigo; // Identificador único para el enemigo.
 
     [SerializeField] public TMP_Text healthText; // Asignar el texto del indicador desde el Inspector.
-    [SerializeField] public int vidaActualUsuario = 1; // Salud actual del jugador.
+    [SerializeField] public int vidaActualUsuario; // Salud actual del jugador.
     [SerializeField] public int vidaInicialUsuario;
     [SerializeField] private float vidaActualEnemigo;
     [SerializeField] public TMP_Text enemyDamageText;
     [SerializeField] private int enemyDamage;
-    [SerializeField] private bool isPlayerTurn = true;
     [SerializeField] private GameObject botonCambioTurno;
 
     void Start()
@@ -37,17 +38,12 @@ public class BarraDeVida : MonoBehaviour
         {
             mensajeFinCombate.SetActive(false);
         }
+        TurnoUsuario();
     }
 
     void Update()
     {
         UpdateHealthText(vidaActualUsuario);
-        if (isPlayerTurn)
-        {
-            TurnoUsuario();
-        } else {
-            TurnoEnemigo();
-        }
     }
 
     public void TurnoUsuario()
@@ -69,7 +65,11 @@ public class BarraDeVida : MonoBehaviour
         }
 
         TakeDamage(enemyDamage);
-        isPlayerTurn = true;
+        if (vidaActualUsuario == 0)
+        {
+            SceneManager.LoadScene(escenaGameOver);
+        }
+        TurnoUsuario();
     }
 
     public void AplicarDaño(float daño)
@@ -126,11 +126,6 @@ public class BarraDeVida : MonoBehaviour
         SceneManager.LoadScene(nombreSiguienteEscena);
     }
 
-    public void CambiarTurno()
-    {
-        isPlayerTurn = false;
-    }
-
     public void InitializeHealth(int vidaInicialUsuario)
     {
         vidaActualUsuario = vidaInicialUsuario;
@@ -159,7 +154,8 @@ public class BarraDeVida : MonoBehaviour
 
     private void GenerarDamageEnemigo() 
     {
-        enemyDamage = 1;
+        System.Random random = new System.Random();
+        enemyDamage = random.Next(1, 4);
     }
     private void IntencionEnemigo()
     {
