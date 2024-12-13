@@ -173,7 +173,13 @@ public class BarraDeVida : MonoBehaviour
     {
         if (defensaText != null)
         {
-            defensaText.text = defensa.ToString();
+            if (defensa == 0)
+            {
+                defensaText.text = "";
+            } else
+            {
+                defensaText.text = defensa.ToString();
+            }
         }
     }
 

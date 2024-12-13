@@ -1295,7 +1295,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 68.9
+  field of view: 51.1
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1415,7 +1415,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152354772}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -427.99}
+  m_LocalPosition: {x: 0, y: 0, z: -427.742}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1427,7 +1427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 256.436, y: -272.035}
+  m_AnchoredPosition: {x: 256.56897, y: -272.01685}
   m_SizeDelta: {x: 0.3851, y: 0.2354}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1152354774
@@ -2735,7 +2735,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1804407132
 RectTransform:
@@ -2749,12 +2749,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1162453160}
   - {fileID: 1234740658}
   - {fileID: 999313289}
   - {fileID: 1389786117}
   - {fileID: 700505954}
   - {fileID: 1152354773}
-  - {fileID: 1162453160}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
