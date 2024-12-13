@@ -48,6 +48,7 @@ public class SelectorDeCartas : MonoBehaviour
         if (usos == limiteUsoCartas)
         {
             HideCartas();
+            usos = 0;
         }
     }
 

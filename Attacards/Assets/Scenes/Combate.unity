@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 204600885}
   - component: {fileID: 204600887}
   m_Layer: 5
-  m_Name: Carta1
+  m_Name: Carta1Ataque
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,16 +145,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204600883}
-  m_LocalRotation: {x: 0.19733001, y: 0.0045981025, z: 0.0024399832, w: 0.9803233}
-  m_LocalPosition: {x: 0, y: 0, z: -426.61096}
+  m_LocalRotation: {x: 0, y: 0, z: 0.2164396, w: 0.97629607}
+  m_LocalPosition: {x: 0, y: 0, z: -426.899}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1804407132}
-  m_LocalEulerAnglesHint: {x: 22.76, y: 0.62, z: 0.41}
+  m_Father: {fileID: 1162453160}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 25}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 255.671, y: -272.28772}
+  m_AnchoredPosition: {x: 256.15613, y: -271.97525}
   m_SizeDelta: {x: 0.3852, y: 0.6245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &204600885
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 239598214}
   - component: {fileID: 239598213}
   m_Layer: 5
-  m_Name: Carta1 (4)
+  m_Name: Carta5Defensa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 04684b85c9246b945a48b41d9ec2f4be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0629e7c358247d4291114d4e9521ddd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -453,16 +453,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239598212}
-  m_LocalRotation: {x: 0.19733001, y: 0.0045981025, z: 0.0024399832, w: 0.9803233}
-  m_LocalPosition: {x: 0, y: 0, z: -426.61096}
+  m_LocalRotation: {x: 0, y: 0, z: -0.21643952, w: 0.97629607}
+  m_LocalPosition: {x: 0, y: 0, z: -426.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1804407132}
-  m_LocalEulerAnglesHint: {x: 22.76, y: 0.62, z: 0.41}
+  m_Father: {fileID: 1162453160}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -25}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 257.39725, y: -272.28772}
+  m_AnchoredPosition: {x: 256.83636, y: -271.991}
   m_SizeDelta: {x: 0.3852, y: 0.6245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &341698972
@@ -1427,7 +1427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 256.493, y: -271.74}
+  m_AnchoredPosition: {x: 256.436, y: -272.035}
   m_SizeDelta: {x: 0.3851, y: 0.2354}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1152354774
@@ -1445,6 +1445,46 @@ MonoBehaviour:
   healthText: {fileID: 226135941}
   currentHealth: 10
   vidaInicial: 0
+--- !u!1 &1162453159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1162453160}
+  m_Layer: 0
+  m_Name: Cartas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1162453160
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162453159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 204600884}
+  - {fileID: 1729328652}
+  - {fileID: 1648944497}
+  - {fileID: 1295877065}
+  - {fileID: 239598216}
+  m_Father: {fileID: 1804407132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1169460764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,8 +1705,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
-  m_fontSizeBase: 0.1
+  m_fontSize: 0.2
+  m_fontSizeBase: 0.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1730,7 +1770,7 @@ GameObject:
   - component: {fileID: 1295877067}
   - component: {fileID: 1295877066}
   m_Layer: 5
-  m_Name: Carta1 (3)
+  m_Name: Carta4Defensa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1743,16 +1783,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295877064}
-  m_LocalRotation: {x: 0.19733001, y: 0.0045981025, z: 0.0024399832, w: 0.9803233}
-  m_LocalPosition: {x: 0, y: 0, z: -426.61096}
+  m_LocalRotation: {x: 0, y: 0, z: -0.10452837, w: 0.9945219}
+  m_LocalPosition: {x: 0, y: 0, z: -426.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1804407132}
-  m_LocalEulerAnglesHint: {x: 22.76, y: 0.62, z: 0.41}
+  m_Father: {fileID: 1162453160}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -12}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 256.986, y: -272.28772}
+  m_AnchoredPosition: {x: 256.6411, y: -271.934}
   m_SizeDelta: {x: 0.3852, y: 0.6245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1295877066
@@ -1804,7 +1844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 04684b85c9246b945a48b41d9ec2f4be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0629e7c358247d4291114d4e9521ddd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2309,7 +2349,7 @@ GameObject:
   - component: {fileID: 1648944499}
   - component: {fileID: 1648944498}
   m_Layer: 5
-  m_Name: Carta1 (2)
+  m_Name: Carta3Ataque
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2322,16 +2362,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648944496}
-  m_LocalRotation: {x: 0.19733001, y: 0.0045981025, z: 0.0024399832, w: 0.9803233}
-  m_LocalPosition: {x: 0, y: 0, z: -426.61096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -426.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1804407132}
-  m_LocalEulerAnglesHint: {x: 22.76, y: 0.62, z: 0.41}
+  m_Father: {fileID: 1162453160}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 256.57, y: -272.28772}
+  m_AnchoredPosition: {x: 256.45923, y: -271.934}
   m_SizeDelta: {x: 0.3852, y: 0.6245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648944498
@@ -2523,7 +2563,7 @@ GameObject:
   - component: {fileID: 1729328654}
   - component: {fileID: 1729328653}
   m_Layer: 5
-  m_Name: Carta1 (1)
+  m_Name: Carta2Ataque
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2536,16 +2576,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729328651}
-  m_LocalRotation: {x: 0.19733001, y: 0.0045981025, z: 0.0024399832, w: 0.9803233}
-  m_LocalPosition: {x: 0, y: 0, z: -426.61096}
+  m_LocalRotation: {x: 0, y: 0, z: 0.10452846, w: 0.9945219}
+  m_LocalPosition: {x: 0, y: 0, z: -426.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1804407132}
-  m_LocalEulerAnglesHint: {x: 22.76, y: 0.62, z: 0.41}
+  m_Father: {fileID: 1162453160}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 12}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 256.151, y: -272.28772}
+  m_AnchoredPosition: {x: 256.31506, y: -271.934}
   m_SizeDelta: {x: 0.3852, y: 0.6245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1729328653
@@ -2710,15 +2750,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1234740658}
-  - {fileID: 204600884}
-  - {fileID: 1729328652}
-  - {fileID: 1648944497}
-  - {fileID: 1295877065}
-  - {fileID: 239598216}
   - {fileID: 999313289}
   - {fileID: 1389786117}
   - {fileID: 700505954}
   - {fileID: 1152354773}
+  - {fileID: 1162453160}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2967,15 +3003,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180557533577493817}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.912604, y: -0.26246127, z: 0.2540134, w: 0.18369894}
-  m_LocalPosition: {x: -0.548, y: 0.053, z: -8.3}
+  m_LocalRotation: {x: 0.944129, y: -0.101747, z: 0.21867089, w: 0.22461335}
+  m_LocalPosition: {x: -0.533, y: 0.03, z: -8.317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8465216853549233949}
   - {fileID: 6976956037710199688}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 27.945, y: -204.561, z: -154.111}
+  m_LocalEulerAnglesHint: {x: 27.945, y: -204.561, z: -173.899}
 --- !u!1 &742541806207905932
 GameObject:
   m_ObjectHideFlags: 0
@@ -3175,7 +3211,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338243546021145625}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6537,13 +6573,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338243546021145625}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.6942312, y: 0.043480333, z: -0.0006715804, w: 0.7184374}
-  m_LocalPosition: {x: -0.0010806709, y: -0.0105109345, z: -0.0107777575}
+  m_LocalRotation: {x: -0.68977326, y: -0.00395143, z: 0.04116496, w: 0.7228436}
+  m_LocalPosition: {x: -0.013886724, y: 0.16792412, z: -0.001888901}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 705561775585126275}
-  m_LocalEulerAnglesHint: {x: -85.919, y: 63.002, z: -59.531}
+  m_LocalEulerAnglesHint: {x: -85.466, y: -52.25, z: 55.268}
 --- !u!4 &6976956039133713203
 Transform:
   m_ObjectHideFlags: 0
