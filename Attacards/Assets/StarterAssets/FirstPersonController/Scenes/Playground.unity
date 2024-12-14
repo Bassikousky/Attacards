@@ -314,6 +314,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1061315499}
+  cuerpoEnemigo: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  cameraMoveSpeed: 2
+  sceneToLoad: 
+  cameraController: {fileID: 0}
+  idEnemigo: 
+  personaje: {fileID: 0}
 --- !u!1 &1209551627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -655,6 +662,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1061315499}
+  cuerpoEnemigo: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  cameraMoveSpeed: 2
+  sceneToLoad: 
+  cameraController: {fileID: 0}
+  idEnemigo: 
+  personaje: {fileID: 0}
 --- !u!1 &2114283753834967212
 GameObject:
   m_ObjectHideFlags: 0
