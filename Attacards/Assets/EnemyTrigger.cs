@@ -5,13 +5,15 @@ public class EnemyTriggerZone : MonoBehaviour
 {
     public Transform enemy;         // Asigna el transform del enemigo en el inspector
     public GameObject cuerpoEnemigo;
-    public Transform cameraTransform; // Asigna la c�mara del juego
-    public float cameraMoveSpeed = 2.0f; // Velocidad a la que la c�mara se mueve hacia el enemigo
+    public Transform cameraTransform; // Asigna la cámara del juego
+    public float cameraMoveSpeed = 2.0f; // Velocidad a la que la cámara se mueve hacia el enemigo
     public string sceneToLoad;      // Nombre de la escena a cargar
-    public MonoBehaviour cameraController; // El script de control manual de la c�mara
+    public MonoBehaviour cameraController; // El script de control manual de la cámara
     public string idEnemigo;
-    private bool isCameraMoving = false; // Bandera para mover la c�mara
-    private Vector3 originalCameraPosition; // Para guardar la posici�n original de la c�mara
+    private bool isCameraMoving = false; // Bandera para mover la cámara
+    private Vector3 originalCameraPosition; // Para guardar la posición original de la cámara
+    public GameObject personaje;
+    private PosicionPersonaje posicionPersonaje;
 
     void Start()
     {
@@ -78,7 +80,7 @@ public class EnemyTriggerZone : MonoBehaviour
 
     void ChangeScene()
     {
-
+        SavePositionAndChangeScene(transform.position);
         PlayerPrefs.SetString("enemigo", idEnemigo);
         PlayerPrefs.Save();
         // Cambia a la escena especificada
@@ -99,5 +101,14 @@ public class EnemyTriggerZone : MonoBehaviour
         {
             cameraController.enabled = true;
         }
+    }
+
+    public void SavePositionAndChangeScene(Vector3 position)
+    {
+        // Guardar la posición del personaje
+        PlayerPrefs.SetFloat("PlayerPosX", position.x);
+        PlayerPrefs.SetFloat("PlayerPosY", position.y);
+        PlayerPrefs.SetFloat("PlayerPosZ", position.z);
+        PlayerPrefs.Save(); // Asegúrate de guardar los datos
     }
 }

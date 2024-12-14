@@ -281,6 +281,7 @@ MonoBehaviour:
   sceneToLoad: Combate
   cameraController: {fileID: 9078993846310988380}
   idEnemigo: 2
+  personaje: {fileID: 0}
 --- !u!65 &814565154
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -498,6 +499,7 @@ MonoBehaviour:
   sceneToLoad: Combate
   cameraController: {fileID: 9078993846310988380}
   idEnemigo: 1
+  personaje: {fileID: 0}
 --- !u!224 &1349596778 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8892224244125084019, guid: 9e55d9b4642484f41be20c69a9b48063, type: 3}
@@ -1251,6 +1253,7 @@ GameObject:
   - component: {fileID: 4416926083347132239}
   - component: {fileID: 135756641613574980}
   - component: {fileID: 135756641613574985}
+  - component: {fileID: 5885216829670671796}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -1458,6 +1461,18 @@ MonoBehaviour:
     m_Bits: 0
   canPush: 0
   strength: 1.1
+--- !u!114 &5885216829670671796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926083347132227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 631969a05b2ba3044abf3c9eef51baeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5959203425865605456
 PrefabInstance:
   m_ObjectHideFlags: 0
