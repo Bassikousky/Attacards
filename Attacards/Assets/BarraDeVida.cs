@@ -46,6 +46,11 @@ public class BarraDeVida : MonoBehaviour
         ActualizarBarraDeVida();
         InitializeHealth(vidaInicialUsuario);
 
+
+        if (botonCambioTurno != null)
+        {
+            botonCambioTurno.SetActive(true);
+        }
         // Asegúrate de que el botón está desactivado al inicio.
         if (botonCambioEscena != null)
         {
@@ -136,6 +141,11 @@ public class BarraDeVida : MonoBehaviour
         if (mensajeFinCombate != null)
         {
             mensajeFinCombate.SetActive(true);
+        }
+
+        if (botonCambioTurno != null)
+        {
+            botonCambioTurno.SetActive(false);
         }
 
         // Activa el botón de cambio de escena si está configurado.
