@@ -13,22 +13,22 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] private string nombreSiguienteEscena; // Nombre de la siguiente escena.
     [SerializeField] private string escenaGameOver; // Nombre de la siguiente escena.
     [SerializeField] private string idEnemigo; // Identificador único para el enemigo.
-    [SerializeField] public TMP_Text healthText; 
-    [SerializeField] public TMP_Text defensaText; 
+    [SerializeField] public TMP_Text healthText; // Texto donde se va a indicar por pantalla la vida actual del usuario.
+    [SerializeField] public TMP_Text defensaText; // Texto donde se va a indicar por pantalla los puntos de escudo del usuario.
     [SerializeField] public int vidaActualUsuario; // Salud actual del jugador.
-    [SerializeField] public int vidaInicialUsuario;
-    [SerializeField] private int defensa;
-    [SerializeField] private float vidaActualEnemigo;
-    [SerializeField] public TMP_Text enemyDamageText;
-    [SerializeField] private int enemyDamage;
-    [SerializeField] private GameObject botonCambioTurno;
-    [SerializeField] public SelectorDeCartas selectorCartas;
-    [SerializeField] public GameObject enemigo;
-    [SerializeField] public GameObject boss;
+    [SerializeField] public int vidaInicialUsuario; // Salud inicial del jugador.
+    [SerializeField] private int defensa; // Puntos de escudo
+    [SerializeField] private float vidaActualEnemigo; // Salud actual del enemigo.
+    [SerializeField] public TMP_Text enemyDamageText; // Texto donde se va a indicar por pantalla cuanto daño va a realizar el enemigo en su próximo turno.
+    [SerializeField] private int enemyDamage; // Daño que va a hacer el enemigo en su turno.
+    [SerializeField] private GameObject botonCambioTurno; // Boton para cambiar de turno.
+    [SerializeField] public SelectorDeCartas selectorCartas; //Script de las cartas.
+    [SerializeField] public GameObject enemigo; //Game object que indica al enemigo común.
+    [SerializeField] public GameObject boss; //Game object para el jefe.
 
     void Start()
     {
-        // Inicializa enemigo
+        // Inicializa enemigo y su vida
         idEnemigo = PlayerPrefs.GetString("enemigo","enemigo");
         if (idEnemigo == "4") 
         {
@@ -40,18 +40,19 @@ public class BarraDeVida : MonoBehaviour
             enemigo.SetActive(true);
             boss.SetActive(false);
         }
-
-        // Inicializa la vida actual como la vida máxima.
         vidaActualEnemigo = vidaMaximaEnemigo;
         ActualizarBarraDeVida();
+
+        // Inicializa la vida actual como la vida máxima del usuario.
         InitializeHealth(vidaInicialUsuario);
 
-
+        // El boton de cambio de turno se activa, ya que al principio, siempre es nuestro turno.
         if (botonCambioTurno != null)
         {
             botonCambioTurno.SetActive(true);
         }
-        // Asegúrate de que el botón está desactivado al inicio.
+
+        // Estos dos se desactivan hasta que el usuario gane.
         if (botonCambioEscena != null)
         {
             botonCambioEscena.SetActive(false);
@@ -69,6 +70,7 @@ public class BarraDeVida : MonoBehaviour
         UpdateDefenseText(defensa);
     }
 
+    //Metodo donde se indica que pasa en el turno del usuario.
     public void TurnoUsuario()
     {
         selectorCartas.ResetCartas();
@@ -82,6 +84,7 @@ public class BarraDeVida : MonoBehaviour
         }
     }
 
+    //Metodo donde se indica que pasa en el turno del usuario.
     public void TurnoEnemigo()
     {
         if (botonCambioTurno != null)
@@ -90,23 +93,15 @@ public class BarraDeVida : MonoBehaviour
         }
 
         TakeDamage(enemyDamage);
-        if (vidaActualUsuario == 0)
-        {
-            SceneManager.LoadScene(escenaGameOver);
-        }
         defensa = 0;
         TurnoUsuario();
     }
 
+    // Este metodo se activa cuando seleccionamos una carta de ataque.
     public void AplicarDaño(float daño)
     {
-        // Reduce la vida actual por el daño recibido.
         vidaActualEnemigo -= daño;
-
-        // Asegúrate de que la vida no sea menor que 0.
         vidaActualEnemigo = Mathf.Clamp(vidaActualEnemigo, 0, vidaMaximaEnemigo);
-
-        // Actualiza la escala de la barra de vida.
         ActualizarBarraDeVida();
 
         // Comprueba si la vida llegó a 0 para terminar el combate.
@@ -116,11 +111,13 @@ public class BarraDeVida : MonoBehaviour
         }
     }
 
+    // Este metodo se activa cuando seleccionamos una carta de escudo.
     public void AplicarDefensa(int aumentoDefensa)
     {
         defensa += aumentoDefensa;
     }
 
+    // Cuando atacamos, la barra de vida del enemigo cambiará.
     private void ActualizarBarraDeVida()
     {
         // Calcula el porcentaje de vida restante.
@@ -130,6 +127,7 @@ public class BarraDeVida : MonoBehaviour
         barraDeVida.localScale = new Vector3(porcentajeVida/2, barraDeVida.localScale.y, barraDeVida.localScale.z);
     }
 
+    // Este método se llama cuando la vida del enemigo llega a cero. Se desactiva el botón de pasar turno y se activa el mensaje de victoria y el botón para volver al mundo.
     private void TerminarCombate()
     {
         Debug.Log("¡Combate terminado!");
@@ -142,13 +140,10 @@ public class BarraDeVida : MonoBehaviour
         {
             mensajeFinCombate.SetActive(true);
         }
-
         if (botonCambioTurno != null)
         {
             botonCambioTurno.SetActive(false);
         }
-
-        // Activa el botón de cambio de escena si está configurado.
         if (botonCambioEscena != null)
         {
             botonCambioEscena.SetActive(true);
@@ -161,12 +156,14 @@ public class BarraDeVida : MonoBehaviour
         SceneManager.LoadScene(nombreSiguienteEscena);
     }
 
+    // Setea la vida inicial a la actual.
     public void InitializeHealth(int vidaInicialUsuario)
     {
         vidaActualUsuario = PlayerPrefs.GetInt("Vida", vidaInicialUsuario);
         UpdateHealthText(vidaActualUsuario);
     }
 
+    // Este metodo ocurre cuando termina el turno del enemigo. Recibimos daño dependiendo del poder del ataque y de nuestra defensa.
     public void TakeDamage(int damage)
     {
         int resto = 0;
@@ -174,16 +171,17 @@ public class BarraDeVida : MonoBehaviour
         if (resto < 0)
         {
             vidaActualUsuario = vidaActualUsuario + resto; // Reduce la salud.
-            vidaActualUsuario = Mathf.Max(vidaActualUsuario, 0); // Asegúrate de que no sea menor a 0.
+            vidaActualUsuario = Mathf.Max(vidaActualUsuario, 0); 
         }
         UpdateHealthText(vidaActualUsuario);
 
-        if (vidaActualUsuario == 0) {
-            //Que vaya a pantalla game over
+        if (vidaActualUsuario == 0)
+        {
+            SceneManager.LoadScene(escenaGameOver);
         }
     }
 
-    // Actualiza el texto del indicador.
+    // Actualiza el texto del indicador de salud.
     private void UpdateHealthText(int vida)
     {
         if (healthText != null) 
@@ -192,6 +190,7 @@ public class BarraDeVida : MonoBehaviour
         }
     }
 
+    // Actualiza el texto del indicador de escudo.
     private void UpdateDefenseText(int defensa)
     {
         if (defensaText != null)
@@ -206,9 +205,11 @@ public class BarraDeVida : MonoBehaviour
         }
     }
 
+    // En el turno del enemigo, este nos hará un daño variable.
     private void GenerarDamageEnemigo() 
     {
         System.Random random = new System.Random();
+        // Si el enemigo es el boss, el daño aumenta.
         if (idEnemigo == "4") 
         {
             enemyDamage = random.Next(2, 5);
@@ -218,7 +219,8 @@ public class BarraDeVida : MonoBehaviour
             enemyDamage = random.Next(1, 4);
         }
     }
-         
+
+    // Actualiza el texto del indicador de ataque enemigo.     
     private void IntencionEnemigo()
     {
         if (enemyDamageText != null) {

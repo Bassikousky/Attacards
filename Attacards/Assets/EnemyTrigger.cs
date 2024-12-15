@@ -9,11 +9,9 @@ public class EnemyTriggerZone : MonoBehaviour
     public float cameraMoveSpeed = 2.0f; // Velocidad a la que la cámara se mueve hacia el enemigo
     public string sceneToLoad;      // Nombre de la escena a cargar
     public MonoBehaviour cameraController; // El script de control manual de la cámara
-    public string idEnemigo;
+    public string idEnemigo; // Identificador del enemigo.
     private bool isCameraMoving = false; // Bandera para mover la cámara
     private Vector3 originalCameraPosition; // Para guardar la posición original de la cámara
-    public GameObject personaje;
-    private PosicionPersonaje posicionPersonaje;
 
     void Start()
     {
@@ -96,7 +94,7 @@ public class EnemyTriggerZone : MonoBehaviour
 
     private void OnDisable()
     {
-        // Reactiva el control manual de la c�mara si el script se desactiva
+        // Reactiva el control manual de la cámara si el script se desactiva.
         if (cameraController != null)
         {
             cameraController.enabled = true;
@@ -109,6 +107,6 @@ public class EnemyTriggerZone : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerPosX", position.x);
         PlayerPrefs.SetFloat("PlayerPosY", position.y);
         PlayerPrefs.SetFloat("PlayerPosZ", position.z);
-        PlayerPrefs.Save(); // Asegúrate de guardar los datos
+        PlayerPrefs.Save(); 
     }
 }

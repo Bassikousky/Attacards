@@ -72,6 +72,7 @@ public class SelectorDeCartas : MonoBehaviour
 
     private int GenerarDamage() 
     {
+        // Hace un daño aleatorio entre 1 y 25.
         System.Random random = new System.Random();
         damage = random.Next(1, 26);
         return damage; 
