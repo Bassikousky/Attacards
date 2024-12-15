@@ -13,9 +13,8 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] private string nombreSiguienteEscena; // Nombre de la siguiente escena.
     [SerializeField] private string escenaGameOver; // Nombre de la siguiente escena.
     [SerializeField] private string idEnemigo; // Identificador único para el enemigo.
-
-    [SerializeField] public TMP_Text healthText; // Asignar el texto del indicador desde el Inspector.
-    [SerializeField] public TMP_Text defensaText; // Asignar el texto del indicador desde el Inspector.
+    [SerializeField] public TMP_Text healthText; 
+    [SerializeField] public TMP_Text defensaText; 
     [SerializeField] public int vidaActualUsuario; // Salud actual del jugador.
     [SerializeField] public int vidaInicialUsuario;
     [SerializeField] private int defensa;
@@ -24,9 +23,24 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] private int enemyDamage;
     [SerializeField] private GameObject botonCambioTurno;
     [SerializeField] public SelectorDeCartas selectorCartas;
+    [SerializeField] public GameObject enemigo;
+    [SerializeField] public GameObject boss;
 
     void Start()
     {
+        // Inicializa enemigo
+        idEnemigo = PlayerPrefs.GetString("enemigo","enemigo");
+        if (idEnemigo == "4") 
+        {
+            enemigo.SetActive(false);
+            boss.SetActive(true);
+        } 
+        else
+        {
+            enemigo.SetActive(true);
+            boss.SetActive(false);
+        }
+
         // Inicializa la vida actual como la vida máxima.
         vidaActualEnemigo = vidaMaximaEnemigo;
         ActualizarBarraDeVida();
@@ -108,13 +122,11 @@ public class BarraDeVida : MonoBehaviour
         float porcentajeVida = vidaActualEnemigo / vidaMaximaEnemigo;
 
         // Ajusta la escala de la barra en el eje X, manteniendo los otros ejes iguales.
-        barraDeVida.localScale = new Vector3(porcentajeVida/10, barraDeVida.localScale.y, barraDeVida.localScale.z);
+        barraDeVida.localScale = new Vector3(porcentajeVida/2, barraDeVida.localScale.y, barraDeVida.localScale.z);
     }
 
     private void TerminarCombate()
     {
-        idEnemigo = PlayerPrefs.GetString("enemigo","enemigo");
-
         Debug.Log("¡Combate terminado!");
 
         PlayerPrefs.SetInt(idEnemigo, 1); // 1 significa que el enemigo ha sido derrotado.
@@ -187,8 +199,16 @@ public class BarraDeVida : MonoBehaviour
     private void GenerarDamageEnemigo() 
     {
         System.Random random = new System.Random();
-        enemyDamage = random.Next(1, 4);
+        if (idEnemigo == "4") 
+        {
+            enemyDamage = random.Next(2, 5);
+        }
+        else
+        {
+            enemyDamage = random.Next(1, 4);
+        }
     }
+         
     private void IntencionEnemigo()
     {
         if (enemyDamageText != null) {
