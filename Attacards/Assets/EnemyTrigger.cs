@@ -12,10 +12,10 @@ public class EnemyTriggerZone : MonoBehaviour
     public string idEnemigo; // Identificador del enemigo.
     private bool isCameraMoving = false; // Bandera para mover la cámara
     private Vector3 originalCameraPosition; // Para guardar la posición original de la cámara
+    
 
     void Start()
     {
-
          // Comprueba si el enemigo ya ha sido derrotado.
         if (PlayerPrefs.GetInt(idEnemigo, 0) == 1)
         {
@@ -109,4 +109,5 @@ public class EnemyTriggerZone : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerPosZ", position.z);
         PlayerPrefs.Save(); 
     }
+
 }

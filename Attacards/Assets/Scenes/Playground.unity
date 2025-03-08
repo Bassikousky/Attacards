@@ -590,7 +590,6 @@ MonoBehaviour:
   sceneToLoad: Combate
   cameraController: {fileID: 9078993846310988380}
   idEnemigo: 2
-  personaje: {fileID: 0}
 --- !u!65 &814565154
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -815,7 +814,6 @@ MonoBehaviour:
   sceneToLoad: Combate
   cameraController: {fileID: 9078993846310988380}
   idEnemigo: 1
-  personaje: {fileID: 0}
 --- !u!1 &1191794526
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +827,7 @@ GameObject:
   - component: {fileID: 1191794529}
   - component: {fileID: 1191794528}
   - component: {fileID: 1191794527}
+  - component: {fileID: 1191794532}
   m_Layer: 0
   m_Name: EnemigoJefe
   m_TagString: Untagged
@@ -855,7 +854,6 @@ MonoBehaviour:
   sceneToLoad: Combate
   cameraController: {fileID: 9078993846310988380}
   idEnemigo: 4
-  personaje: {fileID: 0}
 --- !u!65 &1191794528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -946,6 +944,19 @@ Transform:
   - {fileID: 1642848785}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 144.891, z: 0}
+--- !u!114 &1191794532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191794526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b915bac01db05e44bde83404c7ce0c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuerpoBoss: {fileID: 1191794526}
 --- !u!1 &1223630161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,7 +1224,6 @@ MonoBehaviour:
   sceneToLoad: Combate
   cameraController: {fileID: 9078993846310988380}
   idEnemigo: 3
-  personaje: {fileID: 0}
 --- !u!65 &1648001741
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2723,6 +2733,10 @@ PrefabInstance:
     - target: {fileID: 196965377186137263, guid: 2c3223327bd0fdd40a8a0185fe653ebc, type: 3}
       propertyPath: m_Name
       value: Wraith
+      objectReference: {fileID: 0}
+    - target: {fileID: 196965377186137263, guid: 2c3223327bd0fdd40a8a0185fe653ebc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 716092523181465109, guid: 2c3223327bd0fdd40a8a0185fe653ebc, type: 3}
       propertyPath: m_LocalPosition.x

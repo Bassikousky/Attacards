@@ -27,6 +27,7 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] public GameObject boss; //Game object para el jefe.
     [SerializeField] public AudioClip sonidoHacha; //Sonido de ataque para el enemigo común.
     [SerializeField] public AudioClip sonidoFireball; //Sonido de ataque para el jefe.
+    public ActivacionBoss activacionBoss;
     private AudioSource audioSource;
 
     void Start()
@@ -153,6 +154,7 @@ public class BarraDeVida : MonoBehaviour
         PlayerPrefs.SetInt(idEnemigo, 1); // 1 significa que el enemigo ha sido derrotado.
         PlayerPrefs.SetInt("Vida", vidaActualUsuario);
         PlayerPrefs.Save();
+        activacionBoss.IncrementaCuentaActivacionBoss();
 
         if (mensajeFinCombate != null)
         {
