@@ -42,6 +42,15 @@ Attacards es un juego de aventuras y estrategia por turnos ambientado en un mund
 
 A continuación, se describen los scripts principales que componen el juego, incluyendo una descripción detallada de su funcionalidad e intención:
 
+*   **`ActivacionBoss.cs`:**
+    *   **Descripción:** Este script controla la activación del jefe final basándose en la cantidad de enemigos comunes que han sido derrotados. Mantiene una cuenta de los enemigos derrotados en `PlayerPrefs` y activa o desactiva el GameObject del jefe en función de si se ha alcanzado un número requerido de derrotas.
+    *   `public GameObject cuerpoBoss`: El GameObject que representa el cuerpo del jefe final. Se activa o desactiva según el progreso del jugador.
+    *   `private string cuentaActivacionBossKey = "cuentaActivacionBoss"`: La clave utilizada para guardar el conteo de enemigos derrotados en `PlayerPrefs`.
+    *   `private int numeroEnemigos = 3`: El número de enemigos que deben ser derrotados para que el jefe final se active.
+    *   `CheckAndActivateBoss()`: Comprueba si se cumplen las condiciones (suficientes enemigos derrotados) y activa o desactiva el jefe en consecuencia.
+    *   `IncrementaCuentaActivacionBoss()`: Incrementa el contador de enemigos derrotados en `PlayerPrefs` y luego llama a `CheckAndActivateBoss()` para actualizar el estado del jefe.
+    *   **Intención:** Este script asegura que el jefe final no esté disponible hasta que el jugador haya progresado suficientemente en el juego, proporcionando un sentido de progresión y un desafío bien escalado.
+
 *   **`EnemyAI.cs`:**
     *   **Descripción:** Este script controla el comportamiento de la Inteligencia Artificial (IA) de los enemigos en el mundo abierto. Define cómo el enemigo detecta al jugador, lo persigue y, en última instancia, lo obliga a entrar en la zona de combate. La velocidad de persecución y el objetivo de la persecución (el jugador) son configurables a través del Inspector de Unity.
     *   `public Transform player`: Asigna el objeto del jugador para que el enemigo lo persiga. Esto se hace arrastrando el objeto del jugador al campo correspondiente en el Inspector.
@@ -110,22 +119,24 @@ A continuación, se describen los scripts principales que componen el juego, inc
     *   **Intención:** El propósito de este script es controlar el comportamiento de los enemigos en el mundo abierto, haciendo que solo persigan al jugador cuando estén cerca y evitando que lo persigan indefinidamente. Esto crea un mundo más dinámico y evita situaciones frustrantes para el jugador.
 
 *   **`BarraDeVida.cs`:**
-    *   **Descripción:** Este script controla la barra de vida tanto del enemigo como del jugador, gestiona la lógica del combate por turnos y la transición entre las escenas de combate y el mundo abierto. Incluye métodos para aplicar daño, actualizar la barra de vida visual, gestionar el final del combate y cargar otras escenas. También persiste la salud del jugador entre combates y se encarga de la gestion del turno del enemigo.
+    *   **Descripción:** Este script controla la barra de vida tanto del enemigo como del jugador, gestiona la lógica del combate por turnos y la transición entre las escenas de combate y el mundo abierto. Incluye métodos para aplicar daño, actualizar la barra de vida visual, gestionar el final del combate y cargar otras escenas. También persiste la salud del jugador entre combates, se encarga de la gestión del turno del enemigo y reproduce efectos de sonido durante el combate.
     *   `[SerializeField] private float vidaMaximaEnemigo = 100f`: La vida máxima del enemigo. Configurable desde el Inspector.
     *   `[SerializeField] private Transform barraDeVida`: El `Transform` del plano que representa la barra de vida del enemigo.
     *   `[SerializeField] private GameObject botonCambioEscena`: El botón que aparece al final del combate para permitir al jugador volver al mundo abierto.
     *   `[SerializeField] private GameObject mensajeFinCombate`: El mensaje que se muestra al final del combate para indicar la victoria.
     *   `[SerializeField] private string nombreSiguienteEscena`: El nombre de la escena del mundo abierto.
     *   `[SerializeField] private string idEnemigo`: Un identificador único para este enemigo. Utilizado para guardar el estado de "derrotado" del enemigo.
+    *   `[SerializeField] public AudioClip sonidoHacha`: Sonido de ataque para el enemigo común.
+    *   `[SerializeField] public AudioClip sonidoFireball`: Sonido de ataque para el jefe.
+    *    `public ActivacionBoss activacionBoss`: Script de ActivacionBoss para activar al jefe.
     *   `AplicarDaño(float daño)`: Reduce la vida del enemigo por una cantidad específica y actualiza la barra de vida visual.
     *   `ActualizarBarraDeVida()`: Actualiza la escala de la barra de vida visual para reflejar la vida restante del enemigo.
     *   `TerminarCombate()`: Se llama cuando la vida del enemigo llega a cero. Activa los elementos de UI correspondientes (botón de cambio de escena y mensaje de victoria).
     *   `CambiarEscena()`: Carga la escena del mundo abierto.
     *   `TakeDamage(int damage)`: Reduce la salud del jugador.
-    *    `TurnoUsuario()`: Se encarga de resetear las cartas del usuario y generar el ataque que hará el enemigo en su turno.
-    * `TurnoEnemigo()`: Se encarga de realizar el ataque del enemigo y settear valores para el turno del usuario.
-
-    *  **Intención:** Este script proporciona la lógica central para el sistema de combate del juego, gestionando la salud de los combatientes, las interacciones entre ellos y la transición entre el combate y el mundo abierto. También asegura que el progreso del jugador (estado de los enemigos derrotados y salud restante) se conserve entre las escenas.
+    *   `TurnoUsuario()`: Se encarga de resetear las cartas del usuario y generar el ataque que hará el enemigo en su turno.
+    *   `TurnoEnemigo()`: Se encarga de realizar el ataque del enemigo y settear valores para el turno del usuario.
+    *  **Intención:** Este script proporciona la lógica central para el sistema de combate del juego, gestionando la salud de los combatientes, las interacciones entre ellos, la transición entre el combate y el mundo abierto y activando el jefe. También asegura que el progreso del jugador (estado de los enemigos derrotados y salud restante) se conserve entre las escenas y el sonido de los ataques enemigos se reproduzca.
 
 ## Instalación
 
