@@ -25,9 +25,19 @@ public class BarraDeVida : MonoBehaviour
     [SerializeField] public SelectorDeCartas selectorCartas; //Script de las cartas.
     [SerializeField] public GameObject enemigo; //Game object que indica al enemigo común.
     [SerializeField] public GameObject boss; //Game object para el jefe.
+    [SerializeField] public AudioClip sonidoHacha; //Sonido de ataque para el enemigo común.
+    [SerializeField] public AudioClip sonidoFireball; //Sonido de ataque para el jefe.
+    private AudioSource audioSource;
 
     void Start()
     {
+        //Inicializa efectos de sonido
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         // Inicializa enemigo y su vida
         idEnemigo = PlayerPrefs.GetString("enemigo","enemigo");
         if (idEnemigo == "4") 
@@ -93,6 +103,14 @@ public class BarraDeVida : MonoBehaviour
         }
 
         TakeDamage(enemyDamage);
+        if (idEnemigo == "4") // Dependiendo de el enemigo, su ataque sonará de forma diferente.
+        {
+            audioSource.clip = sonidoFireball;
+            audioSource.PlayOneShot(sonidoFireball);
+        } else {
+            audioSource.clip = sonidoHacha;
+            audioSource.PlayOneShot(sonidoHacha);
+        }
         defensa = 0;
         TurnoUsuario();
     }
